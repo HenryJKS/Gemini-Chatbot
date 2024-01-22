@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -38,7 +37,7 @@ const App = () => {
 
   return (
     <div className="principal d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-      <Card className="w-50" style={{background: 'rgba(255, 255, 255, 0.15)', borderRadius:'16px',boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(3.8px)', borderColor: 'black', WebkitBackdropFilter: 'blur(3.8px)'}}>
+      <Card className="w-50" style={{background: 'rgba(255, 255, 255, 0.15)', borderRadius:'16px',boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(2px)', borderColor: 'black', WebkitBackdropFilter: 'blur(3.8px)'}}>
         <Card.Header className="cardheader text-center" style={{color: '#fff'}}>GeminiBot</Card.Header>
         <Card.Body>
           <Card.Text className="cardtext" style={{ maxHeight: '200px', overflowY: 'auto' }}>

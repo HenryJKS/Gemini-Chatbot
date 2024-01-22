@@ -4,6 +4,9 @@
 
 .principal {
   background-color: #1A2421;
+  background-image: url('../images/d.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
 :root {
