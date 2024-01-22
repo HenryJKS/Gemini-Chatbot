@@ -7,14 +7,11 @@ const App = () => {
   const [text, setText] = useState("");
   const [messages, setMessages] = useState([]);
 
-  console.log(messages);
-
   // Send a GET request to the backend
   const getResponse = async () => {
     const response = await fetch(`http://localhost:8000/prompt/${text}`);
 
     const data = await response.json();
-    console.log(data);
 
     if (
       data.candidates &&
@@ -40,34 +37,19 @@ const App = () => {
   };
 
   return (
-    // <div className="chatbot">
-    //   <div className="chat-header">
-    //     <div className="info-container">
-    //       <h3>Chat with</h3>
-    //       <h2>Gemini Bot</h2>
-    //     </div>
-    //   </div>
-    //   <div className="feed">
-    //     {messages?.map((message, _index) => (
-    //       <div key={_index}>
-    //         <div className="question bubble">{message.author}</div>
-    //         <div className="response bubble">{message.bot}</div>
-    //       </div>
-    //     ))}
-    //   </div>
-    //   <textarea value={text} onChange={(e) => setText(e.target.value)} />
-    //   <button onClick={getResponse}>➔</button>
-    // </div>
-
-    <div className="d-flex justify-content-center align-items-center" style={{height: "100vh"}}>
-      <Card className="border rounded border-primary w-50">
-        <Card.Header className="cardheader text-center">GeminiBot</Card.Header>
+    <div className="principal d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+      <Card className="w-50" style={{background: 'rgba(255, 255, 255, 0.15)', borderRadius:'16px',boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(3.8px)', borderColor: 'black', WebkitBackdropFilter: 'blur(3.8px)'}}>
+        <Card.Header className="cardheader text-center" style={{color: '#fff'}}>GeminiBot</Card.Header>
         <Card.Body>
-          <Card.Text className="cardtext">
+          <Card.Text className="cardtext" style={{ maxHeight: '200px', overflowY: 'auto' }}>
             {messages?.map((message, _index) => (
               <div key={_index}>
-                <div className="question bubble">{message.author}</div>
-                <div className="response bubble">{message.bot}</div>
+                <div style={{ width: '100%', textAlign: 'left'}}>
+                  <div className="question bubble border rounded border-success" style={{ display: 'inline-block', margin: "1%", padding: "1%", color: "#fff"}}>User: {message.author}</div>
+                </div>
+                <div style={{ width: '100%', textAlign: 'right' }}>
+                  <div className="response bubble border rounded border-info" style={{ display: 'inline-block', margin: "1%", padding: "1%", color: "#fff"}}>GeminiBot: {message.bot}</div>
+                </div>
               </div>
             ))}
           </Card.Text>
@@ -75,15 +57,15 @@ const App = () => {
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="form-control"
-            rows="3"
+            rows="1"
           />
-          <Button
+          <button
             onClick={getResponse}
-            className="btn btn-primary mt-3"
-            style={{ width: "100%" }}
-          >
-            Send
-          </Button>
+            disabled={!text}
+            className="mt-3"
+            style={{margin: "auto", justifyContent: "center", justifyItems: "center", display: "flex"}}>
+            <span>➛ Send</span>
+          </button>
         </Card.Body>
       </Card>
     </div>
